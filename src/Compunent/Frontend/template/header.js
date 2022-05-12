@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import style from './nav.module.css'
 
 class header extends Component {
@@ -8,14 +9,14 @@ class header extends Component {
             <div>
             <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg shadow-none">
   <div className="container">
-    <a href="/" className="navbar-brand"><img className='ntl-logo' src="img/logo.png" alt /></a>       
+    <Link to="/" className="navbar-brand"><img className='ntl-logo' src="img/logo.png" alt /></Link>       
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <i className="lni-menu" />
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <ul className="navbar-nav mr-auto w-100 justify-content-end">
         <li className="nav-item">
-          <a className="nav-link page-scroll active" href="#home">Home</a>
+          <Link to="/" className="nav-link page-scroll active">Home</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link page-scroll" href="#services">About</a>

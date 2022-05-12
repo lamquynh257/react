@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Post from './post';
+import Post from './post1';
 
 class index extends Component {
   constructor(props) {
@@ -347,9 +347,9 @@ class index extends Component {
           {/* Blog Item Starts */}
           <div className="blog-item-wrapper">
             <div className="blog-item-img">
-              <a >
+              <Link to={'/post/' + post.id}>
                 <img src={post.post_image} className="img-fluid" alt />
-              </a>             
+              </Link>             
             </div>
             <div className="blog-item-text"> 
               <h3><a href="single-post.html">{post.post_title}  <br />Tin tức</a></h3>

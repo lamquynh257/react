@@ -4759,3 +4759,11 @@ p.ntl-post-content {
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+.ntl-post {
+  margin-top: 100px;
+}
+
+.ntl-title {
+  font-size: 5rem;
+}

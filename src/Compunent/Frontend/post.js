@@ -1,41 +1,55 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from "react";
+import {useParams} from 'react-router-dom';
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-export default class post extends Component {
+function Post() {
+  let [post, setPost] = useState({})
+  let {id} = useParams()
+  useEffect( () => {
+     axios({
+      method: 'GET',
+      url: '/api/getpost',
+      params: {id}
+    }).then(res => {
+      console.log(res.data)
+      setPost(res.data)
+      
+      
+    }).catch(err => {
+      console.log(err)
+    });
+  }, [])
+ 
   
-  render() {
-      let {Posts} = this.state
-    return (
-      <div>
-          <header id="home" className="hero-area">    
-    <div className="overlay">
-      <span />
-      <span />
-    </div>
-    <div className="container">      
-      <div className="row space-100">
-        <div className="col-lg-6 col-md-12 col-xs-12">
-          <div className="contents">
-            <h2 className="head-title">Handcrafted Web Template <br />For Business and Startups</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab <br />dolores ea fugiat nesciunt quisquam.</p>
-            <div className="header-button">
-              <a href="#" className="btn btn-border-filled">Get Started</a>
-              <a href="#contact" className="btn btn-border page-scroll">Contact Us</a>
-            </div>
+ 
+  return (
+     <div className="container ntl-post">
+       
+       
+<div className="row justify-content-md-center post-thumb" >
+
+<img src={post.post_image} />
+</div>
+       
+     <div className="row justify-content-md-center blog-post">
+       
+     
+          
+          
+        <div className="ntl-title">
+          {post.post_title}
           </div>
-        </div>
-        <div className="col-lg-6 col-md-12 col-xs-12 p-0">
-          <div className="intro-img">
-            <img src="https://preview.uideck.com/items/slick/business/img/intro.png" alt />
-          </div>            
-        </div>
-      </div> 
-    </div>             
-  </header>
-  <div>
-      NTL 
-  </div>
+          <div className="post-content">
+          {post.post_content}
+          </div>
+          <div className="ntl-author">
+          Tác giả: {post.post_author}
+          </div>
+          
     </div>
+  </div>
     )
-  }
+  
 }
+export default Post
