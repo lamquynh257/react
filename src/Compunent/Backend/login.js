@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Outlet } from 'react-router-dom';
-import Header from './template/header';
-import Sidebar from './template/sidebar';
-import Footer from './template/footer';
 import LayoutAdmin from './layoutAdmin';
 
 export default class login extends Component {
@@ -42,7 +38,7 @@ export default class login extends Component {
             password: password,
           }
         }).then(res => {
-            console.log(res.data.accessToken)
+           // console.log(res.data.accessToken)
             localStorage.setItem("accessToken", res.data.accessToken)
             this.setState({
               isLogin: localStorage.getItem("accessToken")

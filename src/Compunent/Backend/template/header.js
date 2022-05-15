@@ -135,7 +135,7 @@ class header extends Component {
     </li>
     <li className='nav-item'>
           <a type='button' className="nav-link" onClick={this.props.logout}>
-          <i class="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt"></i>
           </a>
     </li>
     <li className="nav-item">

@@ -14,7 +14,8 @@ class users extends Component {
       fullname: '',
       email: '',
       image: '',
-      openModalUser: false
+      openModalUser: false,
+      err: ''
       
     };
   }
@@ -53,6 +54,9 @@ class users extends Component {
       axios({
         method: 'POST',
         url: '/api/edituser',
+        headers: { 
+          'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+        },
         data: {
           id: this.state.id,
           username: this.state.username,
@@ -73,11 +77,15 @@ class users extends Component {
             Users: res.data
           });
         }).catch(err => {
-          console.log(err)
+          //console.log(err)
+          
         });
         this.enableCreU(); 
       }).catch(err => {
-        console.log(err)
+        //console.log(err.response.data.message)
+        this.setState({
+            err: err.response.data.message
+        })
       });
     
     }else{
@@ -188,6 +196,9 @@ class users extends Component {
             <input type="text" name="email" value={email}  onChange={this.onChange} className="form-control" required />
             <label>Hình ảnh:</label>
             <input type="text" name="image" value={image}  onChange={this.onChange} className="form-control" required />
+            <div>
+            {this.state.err}
+            </div>
             <div className="modal-footer">
                 <input className="btn btn-primary" type="submit" name="them" defaultValue="Thêm" />
                 {/* <Link to="/admin/user" className="btn btn-danger">Back</Link> */}
