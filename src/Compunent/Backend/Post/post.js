@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ModalUser from "./modalUser";
 import { Link } from "react-router-dom";
 
 class users extends Component {
@@ -249,20 +248,20 @@ class users extends Component {
     if (window.confirm("Bạn có chắc muốn xoá?")) {
       axios({
         method: "DELETE",
-        url: "/api/deleteuser",
+        url: "/api/deletepost",
         data: {
           id: id,
         },
       })
         .then((res) => {
-          let { Users } = this.state;
+          let { Posts } = this.state;
           if (res.status === 200) {
             // OK
-            var index = this.findIndex(Users, id);
+            var index = this.findIndex(Posts, id);
             if (index !== -1) {
-              Users.splice(index, 1);
+              Posts.splice(index, 1);
               this.setState({
-                Users: Users,
+                Posts: Posts,
               });
             }
           }
@@ -273,10 +272,10 @@ class users extends Component {
     }
   };
 
-  findIndex = (Users, id) => {
+  findIndex = (Posts, id) => {
     var result = -1;
-    Users.forEach((Users, index) => {
-      if (Users.id === id) {
+    Posts.forEach((Posts, index) => {
+      if (Posts.id === id) {
         result = index;
       }
     });
@@ -288,11 +287,6 @@ class users extends Component {
     let { Posts } = this.state;
     return (
       <div>
-        <ModalUser
-          isOpen={this.state.openModalUser}
-          fun={this.renderCreU()}
-          toggleStt={this.toggleStatus}
-        />
         <div className="content-wrapper">
           {/* Content Header (Page header) */}
           <div className="content-header">
