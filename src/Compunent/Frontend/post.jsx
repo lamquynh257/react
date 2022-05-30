@@ -2,8 +2,12 @@ import React from "react";
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useSelector} from "react-redux"
 
 function Post() {
+  
+  const posts = useSelector((state) => state.Posts.post_title);
+  console.log(posts);
   let [post, setPost] = useState({})
   let {id} = useParams()
   useEffect( () => {
@@ -12,7 +16,7 @@ function Post() {
       url: '/api/getpost',
       params: {id}
     }).then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       setPost(res.data)
       
       

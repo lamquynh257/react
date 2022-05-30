@@ -4767,3 +4767,11 @@ p.ntl-post-content {
 .ntl-title {
   font-size: 5rem;
 }
+
+.card-title.blog-item-text {
+    height: 165px;
+}
+
+/* .blog-item {
+  margin-left: 5px;
+} */

@@ -52,37 +52,12 @@ class index extends Component {
     let { Posts } = this.state;
     var settings = {
       dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-      ],
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      pauseOnHover: true,
     };
     return (
       <>
@@ -453,89 +428,55 @@ class index extends Component {
               {/* End Row */}
               {/* Start Row */}
 
-              <div className="row">
+              <Slider {...settings}>
                 {Posts.map((post, i) => {
                   let id = post.id;
                   return (
                     <>
-                      {/* Start Col */}
-                      <div className="col-lg-4 col-md-6 col-xs-12 blog-item">
-                        {/* Blog Item Starts */}
-                        <div className="blog-item-wrapper">
-                          <div className="blog-item-img">
-                            <Link to={"/post/" + post.id}>
-                              <img
-                                src={post.post_image}
-                                className="img-fluid"
-                                alt
-                              />
-                            </Link>
-                          </div>
-                          <div className="blog-item-text">
-                            <h3>
-                              <a href="single-post.html">
-                                {post.post_title} <br />
-                                Tin tức
-                              </a>
-                            </h3>
-                            <p class="ntl-post-content">{post.post_content}</p>
-                            <a href className="read-more">
-                              5 Min read
-                            </a>
-                          </div>
-                          <div className="author">
-                            <span className="name">
-                              <i className="lni-user" />
-                              <a href="#">Posted by {post.post_author}</a>
-                            </span>
-                            <span className="date float-right">
-                              <i className="lni-calendar" />
-                              <a href="#">{post.post_date}</a>
-                            </span>
+                      <section id="blog">
+                        <div className="container">
+                          <div className="blog-item">
+                            <div className="card blog-item-wrapper">
+                              <div className="card-top blog-item-img">
+                                <img
+                                  src={post.post_image}
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div className="card-title blog-item-text">
+                                <h3>
+                                  <Link to={"/post/" + post.id}>
+                                    {post.post_title}
+                                  </Link>
+                                </h3>
+                                <p class="ntl-post-content">
+                                  {post.post_content}
+                                </p>
+                              </div>
+                              {/* <div className="card-content"> */}
+                              {/* </div> */}
+                              <div className="author">
+                                <span className="name">
+                                  <i className="lni-user" />
+                                  <a href="#">Posted by {post.post_author}</a>
+                                </span>
+                                <span className="date float-right">
+                                  <i className="lni-calendar" />
+                                  <a href="#">{post.post_date}</a>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        {/* Blog Item Wrapper Ends*/}
-                      </div>
-                      {/* End Col */}
+                      </section>
                     </>
                   );
                 })}
-              </div>
+              </Slider>
               {/* End Row */}
             </div>
           </section>
           {/* blog Section End */}
-          {/* Contact Us Section */}
-          <section id="contact" className="section">
-            {/* Container Starts */}
-            <div className="container"></div>
-          </section>
-          {/* Contact Us Section End */}
-        </div>
-
-        <div>
-          <h2> Responsive </h2>
-          <Slider {...settings}>
-            {Posts.map((post, i) => {
-              let id = post.id;
-              return (
-                <>
-                  <div className="card blog-item blog-item-wrapper">
-                    <div className="card-top">
-                      <img src={post.post_image} />
-                    </div>
-                    <div className="card-title blog-item-text">
-                      <Link to={"/post/" + post.id}>{post.post_title}</Link>
-                    </div>
-                    <div className="card-content">
-                      <p class="ntl-post-content">{post.post_content}</p>
-                    </div>
-                    <i className="lni-user" />
-                  </div>
-                </>
-              );
-            })}
-          </Slider>
         </div>
       </>
     );
