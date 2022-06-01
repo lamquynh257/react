@@ -2,17 +2,12 @@ import React from "react";
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux"
-import { addPosts } from "../../redux/postSlice";
+// import { addPosts } from "../../redux/postSlice";
 
 function Post() {
-  
-  const posts = useSelector((state) => state.Posts);
-  console.log(posts);
-  const dispatch = useDispatch();
+
   let [post, setPost] = useState({})
   let {id} = useParams()
-  dispatch(addPosts(post))
   useEffect( () => {
      axios({
       method: 'GET',
