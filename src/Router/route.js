@@ -9,6 +9,7 @@ import HomeFrontend from "../Compunent/Frontend/home";
 import Login from "../Compunent/Backend/login";
 import Post from "../Compunent/Frontend/post";
 import AddPost from "../Compunent/Backend/Post/createPost";
+import Cart from "../Compunent/Frontend/cart";
 
 class route extends Component {
   render() {
@@ -26,6 +27,7 @@ class route extends Component {
         <Route path="/" element={<LayoutFrontend />}>
           <Route index element={<HomeFrontend />} />
           <Route path="post/:id" element={<Post />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

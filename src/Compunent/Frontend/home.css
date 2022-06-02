@@ -1,0 +1,16 @@
+.test-buy {
+    display: flex;
+    justify-content: center;
+    background-color: #003080;
+    width: 50%;
+    color: white;
+}
+
+img.img-fluid.product-img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card.blog-item-wrapper.product-cart {
+    border-radius: 20px;
+}

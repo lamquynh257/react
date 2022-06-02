@@ -2,19 +2,33 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getPosts } from "../../redux/postSlice";
+import { getUsers } from "../../redux/userSlice";
+import { getProducts } from "../../redux/productSlice";
+import "./home.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { addToCart } from "../../redux/cartSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const Posts = useSelector((state) => state.Posts);
+  const Users = useSelector((state) => state.Users);
+  const Products = useSelector((state) => state.Products);
   console.log(Posts);
   useEffect(() => {
     dispatch(getPosts());
+    dispatch(getUsers());
+    dispatch(getProducts());
   }, []);
 
+  const handleAddToCard = (product) => {
+    dispatch(addToCart(product));
+    navigate("/cart");
+  };
   var settings = {
     dots: true,
     infinite: true,
@@ -301,7 +315,83 @@ const Home = () => {
           </div>
         </section>
         {/* Cool Fetatures Section End */}
+        {/* Product Section */}
+        <section id="blog" className="">
+          {/* Container Starts */}
+          <div className="container">
+            {/* Start Row */}
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="blog-text section-header text-center">
+                  <div>
+                    <h2 className="section-title">Producs Special</h2>
+                    <div className="desc-text">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do
+                      </p>
+                      <p>eiusmod tempor incididunt ut labore et dolore.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* End Row */}
+            {/* Start Row */}
 
+            <Slider {...settings}>
+              {Products.Products.map((product, i) => {
+                let id = product.id;
+                return (
+                  <>
+                    <section id="product">
+                      <div className="container">
+                        <div className="product-item">
+                          <div className="card blog-item-wrapper product-cart">
+                            <div className="card-top blog-item-img">
+                              <img
+                                src={product.image}
+                                className="img-fluid product-img"
+                              />
+                            </div>
+                            <div className="card-title blog-item-text">
+                              <h3>
+                                <Link to={"/post/" + product.id}>
+                                  {product.name}
+                                </Link>
+                              </h3>
+                              <p class="ntl-post-content">{product.desc}</p>
+                            </div>
+                            {/* <div className="card-content"> */}
+                            {/* </div> */}
+                            <div className="author">
+                              <span className="name">
+                                <i className="lni-user" />
+                                <a href="#">Price {product.price}</a>
+                              </span>
+                              <span className="date float-right">
+                                <i className="lni-calendar" />
+                                <a
+                                  type="button"
+                                  onClick={() => handleAddToCard(product)}
+                                >
+                                  {" "}
+                                  Buy{" "}
+                                </a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </>
+                );
+              })}
+            </Slider>
+            {/* End Row */}
+          </div>
+        </section>
+        {/* blog Section End */}
         {/* Team section Start */}
         <section id="team" className="section">
           <div className="container">
@@ -324,7 +414,47 @@ const Home = () => {
             </div>
             {/* End Row */}
             {/* Start Row */}
+            <div className="row">
+              {/* Start Col */}
+              {Users.Users.map((user, index) => {
+                return (
+                  <div className="col-lg-3 col-md-6 col-xs-12">
+                    <div className="single-team">
+                      <div className="team-thumb">
+                        <img src={user.image} className="img-fluid" alt />
+                      </div>
+                      <div className="team-details">
+                        <div className="team-social-icons">
+                          <ul className="social-list">
+                            <li>
+                              <a href="#">
+                                <i className="lni-facebook-filled" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i className="lni-twitter-filled" />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i className="lni-google-plus" />
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="team-inner text-center">
+                          <h5 className="team-title">{user.username}</h5>
+                          <p>{user.email}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
 
+              {/* Start Col */}
+            </div>
             {/* End Row */}
           </div>
         </section>
