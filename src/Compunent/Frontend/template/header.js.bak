@@ -1,0 +1,81 @@
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import style from "./nav.module.css";
+
+class header extends Component {
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg shadow-none">
+          <div className="container">
+            <Link to="/" className="navbar-brand">
+              <img className="ntl-logo" src="img/logo.png" alt />
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarCollapse"
+              aria-controls="navbarCollapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i className="lni-menu" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarCollapse">
+              <ul className="navbar-nav mr-auto w-100 justify-content-end">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link page-scroll active">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#services">
+                    About
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#features">
+                    Services
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#showcase">
+                    Showcase
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#pricing">
+                    Pricing
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#team">
+                    Team
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#blog">
+                    Blog
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link page-scroll" href="#contact">
+                    Contact
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="btn btn-singin" href="#">
+                    Download
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+}
+
+export default header;

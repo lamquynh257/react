@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const Home = () => {
   const Posts = useSelector((state) => state.Posts);
   const Users = useSelector((state) => state.Users);
   const Products = useSelector((state) => state.Products);
-  console.log(Posts);
+  //console.log(Posts);
   useEffect(() => {
     dispatch(getPosts());
     dispatch(getUsers());
@@ -28,6 +27,7 @@ const Home = () => {
   const handleAddToCard = (product) => {
     dispatch(addToCart(product));
     navigate("/cart");
+    document.documentElement.scrollTop = 0;
   };
   var settings = {
     dots: true,
@@ -316,7 +316,7 @@ const Home = () => {
         </section>
         {/* Cool Fetatures Section End */}
         {/* Product Section */}
-        <section id="blog" className="">
+        <section id="product" className="">
           {/* Container Starts */}
           <div className="container">
             {/* Start Row */}
@@ -344,7 +344,7 @@ const Home = () => {
                 let id = product.id;
                 return (
                   <>
-                    <section id="product">
+                    <section id="blog">
                       <div className="container">
                         <div className="product-item">
                           <div className="card blog-item-wrapper product-cart">
@@ -373,10 +373,11 @@ const Home = () => {
                                 <i className="lni-calendar" />
                                 <a
                                   type="button"
+                                  className="btn btn-primary"
+                                  style={{ color: "white" }}
                                   onClick={() => handleAddToCard(product)}
                                 >
-                                  {" "}
-                                  Buy{" "}
+                                  Buy
                                 </a>
                               </span>
                             </div>
