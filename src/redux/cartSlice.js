@@ -18,7 +18,7 @@ const cartSlice = createSlice({
       );
       if (itemIndex >= 0) {
         state.Products[itemIndex].cartQuantity += 1;
-        toast("Them thanh cong!", {
+        toast(`Thêm "${action.payload.name}" thành công!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -48,7 +48,7 @@ const cartSlice = createSlice({
       );
       state.Products = nextCart;
       localStorage.setItem("Products", JSON.stringify(state.Products));
-      toast(`🦄 Xoá "${action.payload.name}" thành công!`, {
+      toast(`Xoá "${action.payload.name}" thành công!`, {
         position: "top-right",
       });
     },

@@ -42,9 +42,9 @@ export default function Header() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link page-scroll" href="#product">
+                  <Link to="/productlist" className="nav-link page-scroll" href="#product">
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link page-scroll" href="#pricing">

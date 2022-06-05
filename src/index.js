@@ -8,7 +8,7 @@ import store from "./redux/stores";
 import { Provider } from "react-redux";
 import { getProducts } from "./redux/productSlice";
 
-//const postss = store.dispatch(getProducts());
+store.dispatch(getProducts());
 //console.log(postss);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
