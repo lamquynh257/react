@@ -11,6 +11,8 @@ import Post from "../Compunent/Frontend/post";
 import AddPost from "../Compunent/Backend/Post/createPost";
 import Cart from "../Compunent/Frontend/cart";
 import ProductList from "../Compunent/Frontend/productList";
+import Test from "../Compunent/ntl/index";
+import LoginFrontend from "../Compunent/Frontend/login";
 
 class route extends Component {
   render() {
@@ -28,8 +30,16 @@ class route extends Component {
         <Route path="/" element={<LayoutFrontend />}>
           <Route index element={<HomeFrontend />} />
           <Route path="post/:id" element={<Post />} />
+          <Route path="login" element={<LoginFrontend />} />
           <Route path="cart" element={<Cart />} />
           <Route path="productlist" element={<ProductList />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+        <Route path="/ntl" element={<Test />}>
+          <Route index element={<Test />} />
+          {/* <Route path="post/:id" element={<Post />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="productlist" element={<ProductList />} /> */}
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

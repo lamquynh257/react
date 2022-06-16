@@ -90,7 +90,7 @@ export default function Header() {
                 </li>
                 <li className="nav-item">
                   <a className="btn btn-singin" href="#">
-                    Download
+                    Login
                   </a>
                 </li>
               </ul>

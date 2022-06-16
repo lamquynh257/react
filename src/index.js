@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./redux/stores";
 import { Provider } from "react-redux";
 import { getProducts } from "./redux/productSlice";
+import { ToastContainer } from "react-toastify";
 
 store.dispatch(getProducts());
 //console.log(postss);
@@ -16,6 +17,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+        <ToastContainer position="top-right" />
         <App />
       </BrowserRouter>
     </Provider>

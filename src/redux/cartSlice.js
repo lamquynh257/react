@@ -30,7 +30,7 @@ const cartSlice = createSlice({
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.Products.push(tempProduct);
-        toast("Them moi thanh cong!", {
+        toast(`Thêm "${action.payload.name}" thành công!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
